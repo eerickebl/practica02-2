@@ -2,7 +2,7 @@
 
 En esta práctica de Programación y Plataformas Web hice un inventario con Angular y Cloud Firestore. Desde el formulario puedo registrar un producto o editar los datos de uno que ya está en la tabla. Para eliminarlo, la aplicación pide confirmación.
 
-**Aplicación en Vercel:** pendiente de publicación.
+**Aplicación en Vercel:** https://practica02-2.vercel.app
 
 ## Cómo funciona
 
