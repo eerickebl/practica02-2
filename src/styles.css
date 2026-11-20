@@ -1,0 +1,25 @@
+* {box-sizing:border-box}
+body {margin:0;background:#f3f6f5;color:#152e2a;font:1rem/1.5 system-ui,sans-serif}
+header {background:#104942;color:white;font-weight:650;padding:1rem max(5vw,calc((100vw - 68rem)/2))}
+main {max-width:70rem;margin:2rem auto;padding:0 1rem}
+h1 {font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.045em;margin:0 0 1rem}
+section {background:white;border:1px solid #cbd9d5;border-radius:12px;padding:clamp(1rem,3vw,1.8rem);margin-bottom:1rem}
+h2 {margin:0 0 1rem;font-size:1.25rem}
+fieldset {border:0;padding:0;margin:0;max-width:40rem;min-width:0}
+label {display:block;font-weight:600;margin-bottom:.25rem}
+input {display:block;width:100%;padding:.65rem .75rem;margin-bottom:.8rem;border:1px solid #819791;border-radius:6px;font:inherit}
+.numeros {display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+button {font:inherit;font-weight:600;cursor:pointer;border:1px solid #a2b6b0;background:white;color:#19554a;padding:.45rem .8rem;border-radius:6px}
+button:disabled {opacity:.55;cursor:default}
+button:focus-visible,input:focus-visible {outline:3px solid #1a8275;outline-offset:2px}
+.primario {color:white;background:#16594f;border-color:#16594f}
+.borrar,.error,small {color:#982f27}
+small {display:block;margin:-.45rem 0 .75rem}
+.ok,.error {padding:.65rem 1rem;border-radius:6px;background:#dfefe9}
+.error {background:#ffebe6}
+.tabla {overflow-x:auto}
+table {width:100%;border-collapse:collapse;text-align:left}
+th,td {border-bottom:1px solid #dde5e2;padding:.65rem;overflow-wrap:anywhere}
+th {background:#f2f7f5}
+.acciones {white-space:nowrap}
+

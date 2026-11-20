@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.angular/
+out-tsc/
+.vercel/
+test-results/
+playwright-report/
+.env*
+*serviceAccount*.json
+*firebase-adminsdk*.json
+*.pem
+

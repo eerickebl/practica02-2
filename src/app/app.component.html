@@ -1,0 +1,28 @@
+<header><div>Control de inventario</div></header>
+<main>
+<h1>Productos</h1>
+@if (error) { <p class="error" role="alert">{{ error }}</p> }
+@if (mensaje) { <p class="ok" role="status">{{ mensaje }}</p> }
+<section>
+<h2>{{ seleccionado ? 'Editar producto' : 'Nuevo producto' }}</h2>
+<form (ngSubmit)="guardar()" novalidate>
+<fieldset [disabled]="ocupado || !listo">
+<label for="nombre">Nombre</label><input id="nombre" name="nombre" [(ngModel)]="form.nombre" required>
+@if (intento && errores.nombre) { <small>{{ errores.nombre }}</small> }
+<label for="categoria">Categoría</label><input id="categoria" name="categoria" [(ngModel)]="form.categoria" required>
+@if (intento && errores.categoria) { <small>{{ errores.categoria }}</small> }
+<div class="numeros"><div><label for="precio">Precio (USD)</label><input id="precio" type="number" name="precio" min="0" step="any" [(ngModel)]="form.precio" required>
+@if (intento && errores.precio) { <small>{{ errores.precio }}</small> }</div>
+<div><label for="stock">Stock</label><input id="stock" type="number" name="stock" min="0" step="1" [(ngModel)]="form.stock" required>
+@if (intento && errores.stock) { <small>{{ errores.stock }}</small> }</div></div>
+<button class="primario" type="submit">{{ seleccionado ? 'Guardar cambios' : 'Crear producto' }}</button>
+@if (seleccionado) { <button type="button" (click)="limpiar()">Cancelar edición</button> }
+</fieldset></form></section>
+<section><h2>Inventario</h2>
+@if (!listo && !error) { <p role="status">Conectando con Firestore…</p> }
+@if (listo && !filas.length) { <p>No hay productos registrados.</p> }
+@if (filas.length) { <div class="tabla"><table>
+<thead><tr><th>Nombre</th><th>Categoría</th><th>Precio (USD)</th><th>Stock</th><th>Acciones</th></tr></thead>
+<tbody>@for (p of filas; track p.id) { <tr><td>{{ p.nombre }}</td><td>{{ p.categoria }}</td><td>{{ p.precio }}</td><td>{{ p.stock }}</td><td class="acciones"><button [disabled]="ocupado || !listo" (click)="editar(p)">Editar</button>
+<button class="borrar" [disabled]="ocupado || !listo" (click)="eliminar(p)">Eliminar</button></td></tr> }</tbody></table></div> }
+</section></main>

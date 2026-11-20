@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /productos/{id} {
+      function valido() {
+        let p = request.resource.data;
+        return p.keys().hasAll(['nombre','categoria','precio','stock'])
+          && p.keys().hasOnly(['nombre','categoria','precio','stock'])
+          && p.nombre is string && p.nombre.matches('.*\\S.*')
+          && p.categoria is string && p.categoria.matches('.*\\S.*')
+          && p.precio is number && p.precio >= 0
+          && p.stock is int && p.stock >= 0;
+      }
+      allow read, delete: if request.auth != null;
+      allow create, update: if request.auth != null && valido();
+    }
+  }
+}
